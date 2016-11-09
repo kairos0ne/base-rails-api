@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  overview: MyText
+  objective: MyText
+  status_value: 1
+  status: MyString
+  ticket: MyString
+  jira_epic: MyString
+  references: 
+
+two:
+  overview: MyText
+  objective: MyText
+  status_value: 1
+  status: MyString
+  ticket: MyString
+  jira_epic: MyString
+  references: 
