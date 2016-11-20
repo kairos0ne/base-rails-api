@@ -1,12 +1,11 @@
 class CreateBriefs < ActiveRecord::Migration[5.0]
   def change
     create_table :briefs do |t|
-      t.text :overview
+      t.string :Project
       t.text :objective
-      t.integer :status_value
+      t.text :overview
       t.string :status
-      t.string :ticket
-      t.string :jira_epic
+      t.integer :status_value
       t.references :project, foreign_key: true
 
       t.timestamps
