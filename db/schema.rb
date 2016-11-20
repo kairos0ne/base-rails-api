@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120035053) do
+ActiveRecord::Schema.define(version: 20161120113204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,9 +39,13 @@ ActiveRecord::Schema.define(version: 20161120035053) do
   create_table "continuations", force: :cascade do |t|
     t.text     "continuation"
     t.integer  "story_id"
+    t.integer  "given_id"
+    t.integer  "time_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["given_id"], name: "index_continuations_on_given_id", using: :btree
     t.index ["story_id"], name: "index_continuations_on_story_id", using: :btree
+    t.index ["time_id"], name: "index_continuations_on_time_id", using: :btree
   end
 
   create_table "epics", force: :cascade do |t|
@@ -92,6 +96,14 @@ ActiveRecord::Schema.define(version: 20161120035053) do
     t.index ["feature_id"], name: "index_stories_on_feature_id", using: :btree
   end
 
+  create_table "thens", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "story_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_thens_on_story_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -100,12 +112,21 @@ ActiveRecord::Schema.define(version: 20161120035053) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "whens", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "story_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_whens_on_story_id", using: :btree
+  end
+
   add_foreign_key "briefs", "projects"
   add_foreign_key "clients", "users"
-  add_foreign_key "continuations", "stories"
   add_foreign_key "epics", "projects"
   add_foreign_key "features", "epics"
   add_foreign_key "givens", "stories"
   add_foreign_key "projects", "clients"
   add_foreign_key "stories", "features"
+  add_foreign_key "thens", "stories"
+  add_foreign_key "whens", "stories"
 end
