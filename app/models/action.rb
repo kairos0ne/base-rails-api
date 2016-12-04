@@ -1,4 +1,4 @@
-class When < ApplicationRecord
+class Action < ApplicationRecord
   belongs_to :story
   has_many :continuation, :through => :story
 end

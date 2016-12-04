@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120113204) do
+ActiveRecord::Schema.define(version: 20161127114801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actions", force: :cascade do |t|
+    t.text     "action"
+    t.integer  "story_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_actions_on_story_id", using: :btree
+  end
 
   create_table "briefs", force: :cascade do |t|
     t.string   "Project"
@@ -76,6 +84,14 @@ ActiveRecord::Schema.define(version: 20161120113204) do
     t.index ["story_id"], name: "index_givens_on_story_id", using: :btree
   end
 
+  create_table "occurs", force: :cascade do |t|
+    t.text     "occurs"
+    t.integer  "story_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_occurs_on_story_id", using: :btree
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -86,6 +102,12 @@ ActiveRecord::Schema.define(version: 20161120113204) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["client_id"], name: "index_projects_on_client_id", using: :btree
+  end
+
+  create_table "sectors", force: :cascade do |t|
+    t.text     "sector"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stories", force: :cascade do |t|
@@ -120,11 +142,13 @@ ActiveRecord::Schema.define(version: 20161120113204) do
     t.index ["story_id"], name: "index_whens_on_story_id", using: :btree
   end
 
+  add_foreign_key "actions", "stories"
   add_foreign_key "briefs", "projects"
   add_foreign_key "clients", "users"
   add_foreign_key "epics", "projects"
   add_foreign_key "features", "epics"
   add_foreign_key "givens", "stories"
+  add_foreign_key "occurs", "stories"
   add_foreign_key "projects", "clients"
   add_foreign_key "stories", "features"
   add_foreign_key "thens", "stories"

@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :then do
-    text "MyText"
+  factory :occur do
+    occurs "MyText"
     story nil
   end
 end

@@ -1,7 +1,6 @@
 class Story < ApplicationRecord
   belongs_to :feature
-  has_one :given
-  has_one :when 
-  has_one :then
-  	
+  has_many :given
+  has_many :when 
+  has_many :then
 end

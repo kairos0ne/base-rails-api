@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :brief do
-    Project "MyString"
-    objective "MyText"
+    Project "Test the Project Name"
+    objective "The objective that is input through testing factory girl to checjk if concatination is working"
     overview "MyText"
     status "MyString"
     status_value 1

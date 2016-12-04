@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :when do
-    text "MyText"
+  factory :action do
+    action "MyText"
     story nil
   end
 end

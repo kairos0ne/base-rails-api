@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :continuation do
-    continuation "MyText"
+    continuation "I have some other condition"
     story nil
   end
 end
