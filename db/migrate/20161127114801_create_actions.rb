@@ -6,5 +6,9 @@ class CreateActions < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+    create_table :continuations_actions, id: false do |t|
+      t.belongs_to :continuation, index: true
+      t.belongs_to :actions, index: true
+    end
   end
 end

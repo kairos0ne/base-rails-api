@@ -1,8 +1,8 @@
 class StorySerializer < ActiveModel::Serializer
-  attributes :id, :story
+  attributes :id, :asa, :iwant, :sothat
   has_one :feature
-  has_many :given
-  has_many :when
-  has_many :then
+  has_many :givens
+  has_many :occurs
+  has_many :actions
   	
 end

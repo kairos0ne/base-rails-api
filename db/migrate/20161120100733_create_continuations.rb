@@ -5,5 +5,9 @@ class CreateContinuations < ActiveRecord::Migration[5.0]
       t.belongs_to :story, index: true
       t.timestamps
     end
+    create_table :continuations_givens, id: false do |t|
+      t.belongs_to :continuation, index: true
+      t.belongs_to :given, index: true
+    end
   end
 end

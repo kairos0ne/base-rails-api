@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
   belongs_to :client
-  has_many :brief
-  has_many :feature
-  has_many :epic
+  has_many :briefs
+  has_many :features
+  has_many :epics
+  has_one :sector
 end
