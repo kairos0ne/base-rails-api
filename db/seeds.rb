@@ -8,6 +8,6 @@
 
 # Create Test User 
 
-user = User.create({ name: 'Test', email: 't@test.com', password: 'testpass', password_confirmation: 'testpass' })
+user = User.create({ name: 'Test', username: 'TestUser', email: 't@test.com', password: 'testpass', password_confirmation: 'testpass' })
 
 
