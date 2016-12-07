@@ -46,6 +46,6 @@ class BriefsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def brief_params
-      params.require(:brief).permit(:Project, :objective, :overview, :status, :status_value, :project_id)
+      params.require(:brief).permit(:objective, :overview, :status, :status_value, :project_id)
     end
 end

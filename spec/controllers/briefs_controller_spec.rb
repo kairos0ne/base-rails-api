@@ -34,9 +34,15 @@ RSpec.describe BriefsController, type: :controller do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # BriefsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { { Auth} }
 
   describe "GET #index" do
+    it "responds successfully with an HTTP 200 status code" do
+      get :index
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
     it "assigns all briefs as @briefs" do
       brief = Brief.create! valid_attributes
       get :index, params: {}, session: valid_session
