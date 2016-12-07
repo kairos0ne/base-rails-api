@@ -46,6 +46,6 @@ class SectorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sector_params
-      params.require(:sector).permit(:sector)
+      params.require(:sector).permit(:sector, :agile, :digital, :creative, :house_keeping, :video)
     end
 end

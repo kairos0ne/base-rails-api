@@ -4,10 +4,7 @@ class CreateEpics < ActiveRecord::Migration[5.0]
       t.text :as
       t.text :iwant
       t.text :sothat
-      t.string :status
-      t.integer :status_value
       t.references :project, foreign_key: true
-
       t.timestamps
     end
   end
