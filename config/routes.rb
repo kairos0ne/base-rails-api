@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-	 
-  resources :actions
-  resources :occurs
-  resources :sectors
+  
   post 'authenticate', to: 'authentication#authenticate'
   resources :clients do
   	resources :projects do
@@ -10,7 +7,15 @@ Rails.application.routes.draw do
   		resources :features do
   			resources :epics do
   				resources :stories do
-              resources :given
+              resources :given do
+                resources :continuations
+              end
+              resources :actions do
+                resources :continuations
+              end
+              resources :occurs do
+                resources :continuations
+              end
           end
   			end
   		end
