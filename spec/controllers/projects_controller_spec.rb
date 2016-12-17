@@ -25,6 +25,7 @@ RSpec.describe ProjectsController, type: :controller do
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
+    attributes_of :project
   }
 
   let(:invalid_attributes) {

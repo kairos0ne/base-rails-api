@@ -8,7 +8,7 @@ RSpec.describe BriefsController, type: :routing do
     end
 
     it "routes to #new" do
-      expect(:get => "/briefs/new").to route_to("briefs#new")
+      expect(:get => "/briefs").to route_to("briefs#new")
     end
 
     it "routes to #show" do
@@ -16,7 +16,7 @@ RSpec.describe BriefsController, type: :routing do
     end
 
     it "routes to #edit" do
-      expect(:get => "/briefs/1/edit").to route_to("briefs#edit", :id => "1")
+      expect(:get => "/briefs/1").to route_to("briefs#edit", :id => "1")
     end
 
     it "routes to #create" do

@@ -8,7 +8,7 @@ RSpec.describe FeaturesController, type: :routing do
     end
 
     it "routes to #new" do
-      expect(:get => "/features/new").to route_to("features#new")
+      expect(:get => "/features").to route_to("features#new")
     end
 
     it "routes to #show" do
@@ -16,7 +16,7 @@ RSpec.describe FeaturesController, type: :routing do
     end
 
     it "routes to #edit" do
-      expect(:get => "/features/1/edit").to route_to("features#edit", :id => "1")
+      expect(:get => "/features/1").to route_to("features#edit", :id => "1")
     end
 
     it "routes to #create" do

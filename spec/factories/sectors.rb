@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :sector do
-    sector "MyText"
+    sector "Digital"
   end
 end

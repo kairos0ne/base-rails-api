@@ -8,7 +8,7 @@ RSpec.describe StoriesController, type: :routing do
     end
 
     it "routes to #new" do
-      expect(:get => "/stories/new").to route_to("stories#new")
+      expect(:get => "/stories").to route_to("stories#new")
     end
 
     it "routes to #show" do
@@ -16,7 +16,7 @@ RSpec.describe StoriesController, type: :routing do
     end
 
     it "routes to #edit" do
-      expect(:get => "/stories/1/edit").to route_to("stories#edit", :id => "1")
+      expect(:get => "/stories/1").to route_to("stories#edit", :id => "1")
     end
 
     it "routes to #create" do

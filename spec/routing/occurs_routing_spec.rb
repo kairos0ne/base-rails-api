@@ -8,7 +8,7 @@ RSpec.describe OccursController, type: :routing do
     end
 
     it "routes to #new" do
-      expect(:get => "/occurs/new").to route_to("occurs#new")
+      expect(:get => "/occurs").to route_to("occurs#new")
     end
 
     it "routes to #show" do
@@ -16,7 +16,7 @@ RSpec.describe OccursController, type: :routing do
     end
 
     it "routes to #edit" do
-      expect(:get => "/occurs/1/edit").to route_to("occurs#edit", :id => "1")
+      expect(:get => "/occurs/1").to route_to("occurs#edit", :id => "1")
     end
 
     it "routes to #create" do

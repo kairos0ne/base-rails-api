@@ -8,7 +8,7 @@ RSpec.describe GivensController, type: :routing do
     end
 
     it "routes to #new" do
-      expect(:get => "/givens/new").to route_to("givens#new")
+      expect(:get => "/givens").to route_to("givens#new")
     end
 
     it "routes to #show" do
@@ -16,7 +16,7 @@ RSpec.describe GivensController, type: :routing do
     end
 
     it "routes to #edit" do
-      expect(:get => "/givens/1/edit").to route_to("givens#edit", :id => "1")
+      expect(:get => "/givens/1").to route_to("givens#edit", :id => "1")
     end
 
     it "routes to #create" do

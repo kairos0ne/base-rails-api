@@ -8,7 +8,7 @@ RSpec.describe ContinuationsController, type: :routing do
     end
 
     it "routes to #new" do
-      expect(:get => "/continuations/new").to route_to("continuations#new")
+      expect(:get => "/continuations").to route_to("continuations#new")
     end
 
     it "routes to #show" do
@@ -16,7 +16,7 @@ RSpec.describe ContinuationsController, type: :routing do
     end
 
     it "routes to #edit" do
-      expect(:get => "/continuations/1/edit").to route_to("continuations#edit", :id => "1")
+      expect(:get => "/continuations/1").to route_to("continuations#edit", :id => "1")
     end
 
     it "routes to #create" do

@@ -8,7 +8,7 @@ RSpec.describe EpicsController, type: :routing do
     end
 
     it "routes to #new" do
-      expect(:get => "/epics/new").to route_to("epics#new")
+      expect(:get => "/epics").to route_to("epics#new")
     end
 
     it "routes to #show" do
@@ -16,7 +16,7 @@ RSpec.describe EpicsController, type: :routing do
     end
 
     it "routes to #edit" do
-      expect(:get => "/epics/1/edit").to route_to("epics#edit", :id => "1")
+      expect(:get => "/epics/1").to route_to("epics#edit", :id => "1")
     end
 
     it "routes to #create" do

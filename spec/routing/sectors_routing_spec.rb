@@ -8,7 +8,7 @@ RSpec.describe SectorsController, type: :routing do
     end
 
     it "routes to #new" do
-      expect(:get => "/sectors/new").to route_to("sectors#new")
+      expect(:get => "/sectors").to route_to("sectors#new")
     end
 
     it "routes to #show" do
@@ -16,7 +16,7 @@ RSpec.describe SectorsController, type: :routing do
     end
 
     it "routes to #edit" do
-      expect(:get => "/sectors/1/edit").to route_to("sectors#edit", :id => "1")
+      expect(:get => "/sectors/1").to route_to("sectors#edit", :id => "1")
     end
 
     it "routes to #create" do

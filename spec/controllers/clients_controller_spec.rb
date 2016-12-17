@@ -23,18 +23,14 @@ RSpec.describe ClientsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Client. As you add validations to Client, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) { FactoryGirl.attributes_for :client }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) { FactoryGirl.attributes_for :epic }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # ClientsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { { headers: { Authorization:'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODE1NDI5MDV9.FOl4RT5uxXul7-ytUtMG74Y1SRsndnicOgNqGva5xqM'} } }
 
   describe "GET #index" do
     it "assigns all clients as @clients" do

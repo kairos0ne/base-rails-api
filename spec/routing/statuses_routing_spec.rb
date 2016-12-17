@@ -8,7 +8,7 @@ RSpec.describe StatusesController, type: :routing do
     end
 
     it "routes to #new" do
-      expect(:get => "/statuses/new").to route_to("statuses#new")
+      expect(:get => "/statuses").to route_to("statuses#new")
     end
 
     it "routes to #show" do
@@ -16,7 +16,7 @@ RSpec.describe StatusesController, type: :routing do
     end
 
     it "routes to #edit" do
-      expect(:get => "/statuses/1/edit").to route_to("statuses#edit", :id => "1")
+      expect(:get => "/statuses/1").to route_to("statuses#edit", :id => "1")
     end
 
     it "routes to #create" do

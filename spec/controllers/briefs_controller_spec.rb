@@ -28,13 +28,15 @@ RSpec.describe BriefsController, type: :controller do
   }
 
   let(:invalid_attributes) {
-    attributes_for :brief , overview:  
+    attributes_for :brief, :client
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # BriefsController. Be sure to keep this updated too.
-  let(:valid_session) { { Authenticati} }
+  let(:valid_session) {  
+    headers: { 'Content-Type': 'application/json', Authorization:'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODE1NDcyMTJ9.o-1NnNey7rpn8vQkZe2ycziJ3YgvsCtV70lT8qhSmM4' }
+  }
 
   describe "GET #index" do
     it "responds successfully with an HTTP 200 status code" do

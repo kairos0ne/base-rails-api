@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :status do
-    status "MyString"
-    status_value 1
-    project nil
+    status "New"
+    status_value "1"
   end
 end
