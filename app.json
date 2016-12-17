@@ -1,0 +1,17 @@
+{
+  "name": "base-rails-api",
+  "description": "heroku configuration file ",
+  "scripts": {
+    "postdeploy": "bin/rails rake db:setup"
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
