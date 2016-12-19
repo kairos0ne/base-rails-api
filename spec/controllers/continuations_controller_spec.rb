@@ -155,5 +155,4 @@ RSpec.describe ContinuationsController, type: :controller do
       expect(response).to redirect_to(continuations_url)
     end
   end
-
 end

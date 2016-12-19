@@ -1,24 +1,16 @@
-Rails.application.routes.draw do
-  
+Rails.application.routes.draw do 
+  resources :users
   post 'authenticate', to: 'authentication#authenticate'
-  resources :clients do
-  	resources :projects do
-  		resources :briefs
-  		resources :features do
-  			resources :epics do
-  				resources :stories do
-              resources :given do
-                resources :continuations
-              end
-              resources :actions do
-                resources :continuations
-              end
-              resources :occurs do
-                resources :continuations
-              end
-          end
-  			end
-  		end
-  	end
-  end  
+  resources :clients 
+  resources :projects 
+  resources :briefs
+  resources :features 
+  resources :epics 
+  resources :stories 
+  resources :given 
+  resources :continuations
+  resources :actions 
+  resources :continuations
+  resources :occurs
+  resources :continuations         
 end

@@ -24,18 +24,18 @@ RSpec.describe BriefsController, type: :controller do
   # Brief. As you add validations to Brief, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    attributes_for :brief 
+    FactoryGirl.attributes_for :brief 
   }
 
   let(:invalid_attributes) {
-    attributes_for :brief, :client
+    FactoryGirl.attributes_for :brief, :client
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # BriefsController. Be sure to keep this updated too.
   let(:valid_session) {  
-    headers: { 'Content-Type': 'application/json', Authorization:'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODE1NDcyMTJ9.o-1NnNey7rpn8vQkZe2ycziJ3YgvsCtV70lT8qhSmM4' }
+     { headers: { Authorization:'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODE1NDI5MDV9.FOl4RT5uxXul7-ytUtMG74Y1SRsndnicOgNqGva5xqM'} }
   }
 
   describe "GET #index" do
@@ -163,5 +163,4 @@ RSpec.describe BriefsController, type: :controller do
       expect(response).to redirect_to(briefs_url)
     end
   end
-
 end
