@@ -1,8 +1,8 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :status, :status_value
+  attributes :id, :name, :description
   has_one :client
   has_many :briefs
   has_many :epics
   has_one :sector
-  has_one :status
+  has_many :positions
 end

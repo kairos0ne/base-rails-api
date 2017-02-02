@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206224630) do
+ActiveRecord::Schema.define(version: 20170128120201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20161206224630) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_briefs_on_project_id", using: :btree
+  end
+
+  create_table "briefs_position", id: false, force: :cascade do |t|
+    t.integer "brief_id"
+    t.integer "status_id"
+    t.index ["brief_id"], name: "index_briefs_position_on_brief_id", using: :btree
+    t.index ["status_id"], name: "index_briefs_position_on_status_id", using: :btree
   end
 
   create_table "briefs_statuses", id: false, force: :cascade do |t|
@@ -87,6 +94,13 @@ ActiveRecord::Schema.define(version: 20161206224630) do
     t.index ["project_id"], name: "index_epics_on_project_id", using: :btree
   end
 
+  create_table "epics_position", id: false, force: :cascade do |t|
+    t.integer "epic_id"
+    t.integer "status_id"
+    t.index ["epic_id"], name: "index_epics_position_on_epic_id", using: :btree
+    t.index ["status_id"], name: "index_epics_position_on_status_id", using: :btree
+  end
+
   create_table "epics_statuses", id: false, force: :cascade do |t|
     t.integer "epic_id"
     t.integer "status_id"
@@ -100,6 +114,13 @@ ActiveRecord::Schema.define(version: 20161206224630) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["epic_id"], name: "index_features_on_epic_id", using: :btree
+  end
+
+  create_table "features_position", id: false, force: :cascade do |t|
+    t.integer "feature_id"
+    t.integer "status_id"
+    t.index ["feature_id"], name: "index_features_position_on_feature_id", using: :btree
+    t.index ["status_id"], name: "index_features_position_on_status_id", using: :btree
   end
 
   create_table "features_statuses", id: false, force: :cascade do |t|
@@ -125,6 +146,13 @@ ActiveRecord::Schema.define(version: 20161206224630) do
     t.index ["story_id"], name: "index_occurs_on_story_id", using: :btree
   end
 
+  create_table "positions", force: :cascade do |t|
+    t.integer  "status_value"
+    t.string   "text"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -133,6 +161,13 @@ ActiveRecord::Schema.define(version: 20161206224630) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["client_id"], name: "index_projects_on_client_id", using: :btree
+  end
+
+  create_table "projects_position", id: false, force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "status_id"
+    t.index ["project_id"], name: "index_projects_position_on_project_id", using: :btree
+    t.index ["status_id"], name: "index_projects_position_on_status_id", using: :btree
   end
 
   create_table "projects_sectors", id: false, force: :cascade do |t|

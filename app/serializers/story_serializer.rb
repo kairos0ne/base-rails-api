@@ -3,6 +3,5 @@ class StorySerializer < ActiveModel::Serializer
   has_one :feature
   has_many :givens
   has_many :occurs
-  has_many :actions
-  	
+  has_many :actions  	
 end

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do 
+  resources :positions
   resources :users
   post 'authenticate', to: 'authentication#authenticate'
+  get 'clientcount', to: 'clients#count'
   resources :clients 
   resources :projects 
   resources :briefs
@@ -12,5 +14,6 @@ Rails.application.routes.draw do
   resources :actions 
   resources :continuations
   resources :occurs
-  resources :continuations         
+  resources :continuations
+  resources :positions   
 end

@@ -25,16 +25,18 @@ RSpec.describe ContinuationsController, type: :controller do
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
+    FactoryGirl.attributes_for :continuation
   }
 
   let(:invalid_attributes) {
     skip("Add a hash of attributes invalid for your model")
+    FactoryGirl.attributes_for :status
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # ContinuationsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { { Authorization: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODU3NzI2Nzl9.tWlol5dq2F7hqXlLv5kpo69JTdVyffpwXZ_2geili0Q'} }
 
   describe "GET #index" do
     it "assigns all continuations as @continuations" do
