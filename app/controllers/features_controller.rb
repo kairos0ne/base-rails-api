@@ -38,6 +38,13 @@ class FeaturesController < ApplicationController
     @feature.destroy
   end
 
+  # GET /clients
+  def count
+    @featurecount = Feature.all.size
+
+    render json: @featurecount
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_feature

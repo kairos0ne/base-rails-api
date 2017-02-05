@@ -38,6 +38,13 @@ class ProjectsController < ApplicationController
     @project.destroy
   end
 
+  # GET /clients
+  def count
+    @projectcount = Project.all.size
+
+    render json: @projectcount
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project

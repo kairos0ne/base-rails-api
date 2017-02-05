@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :users
   post 'authenticate', to: 'authentication#authenticate'
   get 'clientcount', to: 'clients#count'
+  get 'projectcount', to: 'projects#count'
+  get 'briefcount', to: 'briefs#count'
   resources :clients 
   resources :projects 
   resources :briefs

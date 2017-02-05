@@ -38,6 +38,13 @@ class BriefsController < ApplicationController
     @brief.destroy
   end
 
+    # GET /clients
+  def count
+    @briefcount = Brief.all.size
+
+    render json: @briefcount
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_brief

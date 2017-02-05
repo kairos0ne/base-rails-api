@@ -38,6 +38,13 @@ class EpicsController < ApplicationController
     @epic.destroy
   end
 
+    # GET /clients
+  def count
+    @epiccount = Epic.all.size
+
+    render json: @epiccount
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_epic
