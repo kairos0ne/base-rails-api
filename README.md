@@ -10,22 +10,22 @@ Things you may want to cover:
 
 * System dependencies
 Cors 
-Simple command 
+<br>
+Simple command
+<br>
 JWT 
 
 * Database creation
-1. ) rake db:migrate 
+rake db:migrate 
 
 * Database initialization
-1. ) Postgres DB 
+Postgres DB 
 
 * How to run the test suite
-Rspec test implemented but not complete and failing badly
-* Services (job queues, cache servers, search engines, etc.)
+Rspec test implemented but not setup. 
 
 * Deployment instructions
 Start Development Server
-1. ) rake db:migrate 
-2. ) rails s 
+rails s 
 
 * ...
