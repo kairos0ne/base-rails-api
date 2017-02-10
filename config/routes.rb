@@ -1,21 +1,21 @@
 Rails.application.routes.draw do 
-  resources :positions
-  resources :users
   post 'authenticate', to: 'authentication#authenticate'
-  get 'clientcount', to: 'clients#count'
-  get 'projectcount', to: 'projects#count'
-  get 'briefcount', to: 'briefs#count'
+  post 'users/', to: 'users#create'
   resources :clients 
+  get 'clientcount', to: 'clients#count'
   resources :projects 
+  get 'projectcount', to: 'projects#count'
   resources :briefs
+  get 'briefcount', to: 'briefs#count'
   resources :features 
   resources :epics 
   resources :stories 
+  resources :positions
+  resources :sectors
   resources :given 
-  resources :continuations
   resources :actions 
-  resources :continuations
   resources :occurs
   resources :continuations
-  resources :positions   
+  root to: 'visitors#new'
 end
+

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_request, only: [:index, :create]
+  wrap_parameters :user, include: [:email, :name, :password, :password_confirmation, :id, :password_digest]
 
   # GET /users
   def index
@@ -45,12 +46,8 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    def encrypt_password
-      @password_digest = JWT.encode(:password_digest, Rails.application.secrets.secret_key_base)
-    end
-
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :email, :password_digest, :username)
+      params.require(:user).permit(:email, :name, :password, :password_confirmation, :id, :password_digest)
     end
 end
