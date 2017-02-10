@@ -39,13 +39,6 @@ ActiveRecord::Schema.define(version: 20170128120201) do
     t.index ["status_id"], name: "index_briefs_position_on_status_id", using: :btree
   end
 
-  create_table "briefs_statuses", id: false, force: :cascade do |t|
-    t.integer "brief_id"
-    t.integer "status_id"
-    t.index ["brief_id"], name: "index_briefs_statuses_on_brief_id", using: :btree
-    t.index ["status_id"], name: "index_briefs_statuses_on_status_id", using: :btree
-  end
-
   create_table "clients", force: :cascade do |t|
     t.string   "name"
     t.text     "business_area"
@@ -101,13 +94,6 @@ ActiveRecord::Schema.define(version: 20170128120201) do
     t.index ["status_id"], name: "index_epics_position_on_status_id", using: :btree
   end
 
-  create_table "epics_statuses", id: false, force: :cascade do |t|
-    t.integer "epic_id"
-    t.integer "status_id"
-    t.index ["epic_id"], name: "index_epics_statuses_on_epic_id", using: :btree
-    t.index ["status_id"], name: "index_epics_statuses_on_status_id", using: :btree
-  end
-
   create_table "features", force: :cascade do |t|
     t.text     "feature"
     t.integer  "epic_id"
@@ -121,13 +107,6 @@ ActiveRecord::Schema.define(version: 20170128120201) do
     t.integer "status_id"
     t.index ["feature_id"], name: "index_features_position_on_feature_id", using: :btree
     t.index ["status_id"], name: "index_features_position_on_status_id", using: :btree
-  end
-
-  create_table "features_statuses", id: false, force: :cascade do |t|
-    t.integer "feature_id"
-    t.integer "status_id"
-    t.index ["feature_id"], name: "index_features_statuses_on_feature_id", using: :btree
-    t.index ["status_id"], name: "index_features_statuses_on_status_id", using: :btree
   end
 
   create_table "givens", force: :cascade do |t|
@@ -177,13 +156,6 @@ ActiveRecord::Schema.define(version: 20170128120201) do
     t.index ["sector_id"], name: "index_projects_sectors_on_sector_id", using: :btree
   end
 
-  create_table "projects_statuses", id: false, force: :cascade do |t|
-    t.integer "project_id"
-    t.integer "status_id"
-    t.index ["project_id"], name: "index_projects_statuses_on_project_id", using: :btree
-    t.index ["status_id"], name: "index_projects_statuses_on_status_id", using: :btree
-  end
-
   create_table "sectors", force: :cascade do |t|
     t.text     "sector"
     t.integer  "agile"
@@ -193,13 +165,6 @@ ActiveRecord::Schema.define(version: 20170128120201) do
     t.integer  "house_keeping"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-  end
-
-  create_table "statuses", force: :cascade do |t|
-    t.string   "status"
-    t.integer  "status_value"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
   end
 
   create_table "stories", force: :cascade do |t|
@@ -214,7 +179,6 @@ ActiveRecord::Schema.define(version: 20170128120201) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.string   "username"
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
