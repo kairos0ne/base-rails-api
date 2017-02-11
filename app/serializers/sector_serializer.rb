@@ -1,4 +1,4 @@
 class SectorSerializer < ActiveModel::Serializer
-  attributes :id, :sector, :agile, :digital, :creative, :video, :house_keeping
-  has_many :briefs
+  attributes :id, :sector, :agile, :digital, :creative, :print, :waterfall, :video, :house_keeping
+  has_many :project
 end

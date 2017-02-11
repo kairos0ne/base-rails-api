@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_request, only: [:index, :create]
+  skip_before_action :authenticate_request, only: [:create]
   wrap_parameters :user, include: [:email, :name, :password, :password_confirmation, :id, :password_digest]
 
   # GET /users

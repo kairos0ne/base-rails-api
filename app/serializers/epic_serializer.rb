@@ -1,5 +1,5 @@
 class EpicSerializer < ActiveModel::Serializer
-  attributes :id, :as, :iwant, :sothat, :status, :status_value
+  attributes :id, :epic, :project_id
   has_one :project
-  has_many :feature
+  has_many :positions
 end

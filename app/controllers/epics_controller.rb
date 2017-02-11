@@ -53,6 +53,6 @@ class EpicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def epic_params
-      params.require(:epic).permit(:as, :iwant, :sothat, :status, :status_value, :project_id)
+      params.require(:epic).permit(:as, :epic, :project_id)
     end
 end

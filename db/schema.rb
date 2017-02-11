@@ -32,11 +32,11 @@ ActiveRecord::Schema.define(version: 20170128120201) do
     t.index ["project_id"], name: "index_briefs_on_project_id", using: :btree
   end
 
-  create_table "briefs_position", id: false, force: :cascade do |t|
+  create_table "briefs_positions", id: false, force: :cascade do |t|
     t.integer "brief_id"
-    t.integer "status_id"
-    t.index ["brief_id"], name: "index_briefs_position_on_brief_id", using: :btree
-    t.index ["status_id"], name: "index_briefs_position_on_status_id", using: :btree
+    t.integer "position_id"
+    t.index ["brief_id"], name: "index_briefs_positions_on_brief_id", using: :btree
+    t.index ["position_id"], name: "index_briefs_positions_on_position_id", using: :btree
   end
 
   create_table "clients", force: :cascade do |t|
@@ -78,35 +78,33 @@ ActiveRecord::Schema.define(version: 20170128120201) do
   end
 
   create_table "epics", force: :cascade do |t|
-    t.text     "as"
-    t.text     "iwant"
-    t.text     "sothat"
+    t.text     "epic"
     t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_epics_on_project_id", using: :btree
   end
 
-  create_table "epics_position", id: false, force: :cascade do |t|
+  create_table "epics_positions", id: false, force: :cascade do |t|
     t.integer "epic_id"
-    t.integer "status_id"
-    t.index ["epic_id"], name: "index_epics_position_on_epic_id", using: :btree
-    t.index ["status_id"], name: "index_epics_position_on_status_id", using: :btree
+    t.integer "position_id"
+    t.index ["epic_id"], name: "index_epics_positions_on_epic_id", using: :btree
+    t.index ["position_id"], name: "index_epics_positions_on_position_id", using: :btree
   end
 
   create_table "features", force: :cascade do |t|
     t.text     "feature"
-    t.integer  "epic_id"
+    t.integer  "brief_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["epic_id"], name: "index_features_on_epic_id", using: :btree
+    t.index ["brief_id"], name: "index_features_on_brief_id", using: :btree
   end
 
-  create_table "features_position", id: false, force: :cascade do |t|
+  create_table "features_positions", id: false, force: :cascade do |t|
     t.integer "feature_id"
-    t.integer "status_id"
-    t.index ["feature_id"], name: "index_features_position_on_feature_id", using: :btree
-    t.index ["status_id"], name: "index_features_position_on_status_id", using: :btree
+    t.integer "position_id"
+    t.index ["feature_id"], name: "index_features_positions_on_feature_id", using: :btree
+    t.index ["position_id"], name: "index_features_positions_on_position_id", using: :btree
   end
 
   create_table "givens", force: :cascade do |t|
@@ -126,10 +124,10 @@ ActiveRecord::Schema.define(version: 20170128120201) do
   end
 
   create_table "positions", force: :cascade do |t|
-    t.integer  "status_value"
+    t.integer  "position_value"
     t.string   "text"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "projects", force: :cascade do |t|
@@ -142,11 +140,11 @@ ActiveRecord::Schema.define(version: 20170128120201) do
     t.index ["client_id"], name: "index_projects_on_client_id", using: :btree
   end
 
-  create_table "projects_position", id: false, force: :cascade do |t|
+  create_table "projects_positions", id: false, force: :cascade do |t|
     t.integer "project_id"
-    t.integer "status_id"
-    t.index ["project_id"], name: "index_projects_position_on_project_id", using: :btree
-    t.index ["status_id"], name: "index_projects_position_on_status_id", using: :btree
+    t.integer "position_id"
+    t.index ["position_id"], name: "index_projects_positions_on_position_id", using: :btree
+    t.index ["project_id"], name: "index_projects_positions_on_project_id", using: :btree
   end
 
   create_table "projects_sectors", id: false, force: :cascade do |t|
@@ -159,9 +157,11 @@ ActiveRecord::Schema.define(version: 20170128120201) do
   create_table "sectors", force: :cascade do |t|
     t.text     "sector"
     t.integer  "agile"
+    t.integer  "waterfall"
     t.integer  "digital"
     t.integer  "creative"
     t.integer  "video"
+    t.integer  "print"
     t.integer  "house_keeping"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -171,10 +171,17 @@ ActiveRecord::Schema.define(version: 20170128120201) do
     t.text     "asa"
     t.text     "iwant"
     t.text     "sothat"
-    t.integer  "feature_id"
+    t.integer  "epic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["feature_id"], name: "index_stories_on_feature_id", using: :btree
+    t.index ["epic_id"], name: "index_stories_on_epic_id", using: :btree
+  end
+
+  create_table "stories_positions", id: false, force: :cascade do |t|
+    t.integer "feature_id"
+    t.integer "position_id"
+    t.index ["feature_id"], name: "index_stories_positions_on_feature_id", using: :btree
+    t.index ["position_id"], name: "index_stories_positions_on_position_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -189,9 +196,9 @@ ActiveRecord::Schema.define(version: 20170128120201) do
   add_foreign_key "briefs", "projects"
   add_foreign_key "clients", "users"
   add_foreign_key "epics", "projects"
-  add_foreign_key "features", "epics"
+  add_foreign_key "features", "briefs"
   add_foreign_key "givens", "stories"
   add_foreign_key "occurs", "stories"
   add_foreign_key "projects", "clients"
-  add_foreign_key "stories", "features"
+  add_foreign_key "stories", "epics"
 end
