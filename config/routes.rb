@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :stories 
   resources :positions
   resources :sectors
-  resources :given 
+  resources :givens
   resources :actions 
   resources :occurs
   resources :continuations
