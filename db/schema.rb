@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20170128120201) do
 
   create_table "continuations_actions", id: false, force: :cascade do |t|
     t.integer "continuation_id"
-    t.integer "actions_id"
-    t.index ["actions_id"], name: "index_continuations_actions_on_actions_id", using: :btree
+    t.integer "action_id"
+    t.index ["action_id"], name: "index_continuations_actions_on_action_id", using: :btree
     t.index ["continuation_id"], name: "index_continuations_actions_on_continuation_id", using: :btree
   end
 
@@ -72,9 +72,9 @@ ActiveRecord::Schema.define(version: 20170128120201) do
 
   create_table "continuations_occurs", id: false, force: :cascade do |t|
     t.integer "continuation_id"
-    t.integer "occure_id"
+    t.integer "occur_id"
     t.index ["continuation_id"], name: "index_continuations_occurs_on_continuation_id", using: :btree
-    t.index ["occure_id"], name: "index_continuations_occurs_on_occure_id", using: :btree
+    t.index ["occur_id"], name: "index_continuations_occurs_on_occur_id", using: :btree
   end
 
   create_table "epics", force: :cascade do |t|
@@ -178,14 +178,15 @@ ActiveRecord::Schema.define(version: 20170128120201) do
   end
 
   create_table "stories_positions", id: false, force: :cascade do |t|
-    t.integer "feature_id"
+    t.integer "story_id"
     t.integer "position_id"
-    t.index ["feature_id"], name: "index_stories_positions_on_feature_id", using: :btree
     t.index ["position_id"], name: "index_stories_positions_on_position_id", using: :btree
+    t.index ["story_id"], name: "index_stories_positions_on_story_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
+    t.string   "username"
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at",      null: false

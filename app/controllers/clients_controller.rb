@@ -38,11 +38,37 @@ class ClientsController < ApplicationController
     @client.destroy
   end
 
-  # GET /clients
+  # GET /clientcount
   def count
     @clientcount = Client.all.size
 
     render json: @clientcount
+  end
+
+   # GET clients/:id/usrerclients Gives only clients where the client id is given as a param
+  def userclients
+    @userclients = User.joins(:clients).merge(Client.where(:id => params[:id]))
+
+    render json: @userclients
+  end
+
+  # GET clients/:id/usrerclients Gives only clients where the client id is given as a param
+  def clientuser
+    @clientuser = Client.joins(:user).merge(User.where(:id => params[:id]))
+
+    render json: @clientuser
+  end
+
+  # GET clients/:id/projects Gives the specific projects for a single client
+  def projects
+    @projects = Project.where(:client_id => params[:id])
+    render json: @projects
+  end
+
+   # GET clients/:id/projects Gives the specific projects for a single client
+  def firstclient
+    @firstclient = Client.where(:id => 1)
+    render json: @firstclient
   end
 
   private

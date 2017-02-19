@@ -45,6 +45,12 @@ class EpicsController < ApplicationController
     render json: @epiccount
   end
 
+    # GET epics/:id/projects Gives the specific projects for a single client
+  def stories
+    @stories = Story.where(:epic_id => params[:id])
+    render json: @stories
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_epic
@@ -53,6 +59,6 @@ class EpicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def epic_params
-      params.require(:epic).permit(:as, :epic, :project_id)
+      params.require(:epic).permit(:epic, :project_id)
     end
 end

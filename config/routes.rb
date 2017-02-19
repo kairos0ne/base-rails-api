@@ -1,21 +1,60 @@
 Rails.application.routes.draw do 
   
-  root to: 'visitors#new'
   post 'authenticate', to: 'authentication#authenticate'
-  resources :users
-  resources :clients 
-  get 'clientcount', to: 'clients#count'
-  resources :projects 
-  get 'projectcount', to: 'projects#count'
-  resources :briefs
-  get 'briefcount', to: 'briefs#count'
-  resources :features 
-  resources :epics 
-  resources :stories 
+  
+  resources :users do
+    member do
+      get :clients
+    end
+  end
+
+  resources :clients do 
+    collection do 
+      get 'count'
+    end
+    collection do
+      get 'firstclient'
+    end
+    member do 
+      get :userclients, :clientuser, :projects, :position, :sector
+    end
+  end
+
+  resources :projects do 
+    collection do
+      get 'count'
+    end
+    member do
+      get :epics, :stories, :position
+    end
+  end
+
+  resources :briefs do
+    collection do
+      get 'count'
+    end
+    member do
+      get :features
+    end
+  end
+
+  resources :epics do
+    member do 
+      get :stories
+    end
+  end
+
+  resources :stories do
+    member do
+      get :givens, :occurs, :actions 
+    end
+  end
+  
+  resources :features
   resources :positions
   resources :sectors
   resources :givens
-  resources :actions 
+  resources :actions
   resources :occurs
   resources :continuations
   

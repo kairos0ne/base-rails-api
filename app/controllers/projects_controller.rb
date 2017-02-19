@@ -45,6 +45,12 @@ class ProjectsController < ApplicationController
     render json: @projectcount
   end
 
+  # GET projects/:id/projects Gives the specific projects for a single client
+  def epics
+    @epics = Epic.where(:project_id => params[:id])
+    render json: @epics
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project

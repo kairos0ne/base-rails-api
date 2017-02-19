@@ -23,7 +23,7 @@ class CreatePositions < ActiveRecord::Migration[5.0]
       t.belongs_to :position, index: true
     end
     create_table :stories_positions, id: false do |t|
-      t.belongs_to :feature, index: true
+      t.belongs_to :story, index: true
       t.belongs_to :position, index: true
     end
   end
