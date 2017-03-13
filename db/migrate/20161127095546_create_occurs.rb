@@ -6,9 +6,5 @@ class CreateOccurs < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    create_table :continuations_occurs, id: false do |t|
-      t.belongs_to :continuation, index: true
-      t.belongs_to :occur, index: true
-    end
   end
 end

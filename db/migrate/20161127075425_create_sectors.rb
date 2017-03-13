@@ -9,11 +9,9 @@ class CreateSectors < ActiveRecord::Migration[5.0]
       t.integer :video
       t.integer :print
       t.integer :house_keeping
+      t.references :project, foreign_key: true
+      
       t.timestamps
-    end
-    create_table :projects_sectors, id: false do |t|
-      t.belongs_to :project, index: true
-      t.belongs_to :sector, index: true
     end
   end
 end

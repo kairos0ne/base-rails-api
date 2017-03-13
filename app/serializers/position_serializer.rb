@@ -3,6 +3,6 @@ class PositionSerializer < ActiveModel::Serializer
   has_many :projects
   has_many :briefs
   has_many :features
-  has_many :epics
+  has_many :epic
   has_many :stories
 end

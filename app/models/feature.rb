@@ -1,6 +1,5 @@
 class Feature < ApplicationRecord
-  validates :feature, :bried_id, presence: true
-
-  belongs_to :brief
+  belongs_to :project
+  has_one :brief, through: :project
   has_many :stories
 end
