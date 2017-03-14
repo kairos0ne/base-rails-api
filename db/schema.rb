@@ -41,14 +41,6 @@ ActiveRecord::Schema.define(version: 20170128120201) do
     t.index ["user_id"], name: "index_clients_on_user_id", using: :btree
   end
 
-  create_table "continuations", force: :cascade do |t|
-    t.text     "continuation"
-    t.integer  "story_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["story_id"], name: "index_continuations_on_story_id", using: :btree
-  end
-
   create_table "epics", force: :cascade do |t|
     t.text     "epic"
     t.integer  "project_id"
@@ -59,10 +51,10 @@ ActiveRecord::Schema.define(version: 20170128120201) do
 
   create_table "features", force: :cascade do |t|
     t.text     "feature"
-    t.integer  "project_id"
+    t.integer  "brief_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_features_on_project_id", using: :btree
+    t.index ["brief_id"], name: "index_features_on_brief_id", using: :btree
   end
 
   create_table "givens", force: :cascade do |t|
@@ -119,10 +111,10 @@ ActiveRecord::Schema.define(version: 20170128120201) do
     t.text     "asa"
     t.text     "iwant"
     t.text     "sothat"
-    t.integer  "project_id"
+    t.integer  "epic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_stories_on_project_id", using: :btree
+    t.index ["epic_id"], name: "index_stories_on_epic_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -138,11 +130,11 @@ ActiveRecord::Schema.define(version: 20170128120201) do
   add_foreign_key "briefs", "projects"
   add_foreign_key "clients", "users"
   add_foreign_key "epics", "projects"
-  add_foreign_key "features", "projects"
+  add_foreign_key "features", "briefs"
   add_foreign_key "givens", "stories"
   add_foreign_key "occurs", "stories"
   add_foreign_key "positions", "projects"
   add_foreign_key "projects", "clients"
   add_foreign_key "sectors", "projects"
-  add_foreign_key "stories", "projects"
+  add_foreign_key "stories", "epics"
 end

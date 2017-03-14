@@ -53,6 +53,6 @@ class FeaturesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def feature_params
-      params.require(:feature).permit(:feature, :epic_id)
+      params.require(:feature).permit(:feature, :brief_id )
     end
 end

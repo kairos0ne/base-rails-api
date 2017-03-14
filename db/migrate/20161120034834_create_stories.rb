@@ -4,7 +4,7 @@ class CreateStories < ActiveRecord::Migration[5.0]
       t.text :asa
       t.text :iwant
       t.text :sothat
-      t.references :project, foreign_key: true
+      t.references :epic, foreign_key: true
 
       t.timestamps
     end
