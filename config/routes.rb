@@ -54,9 +54,10 @@ Rails.application.routes.draw do
   resources :positions
   resources :sectors
   resources :givens
-  resources :actions
+  resources :given_continuations
+  resources :actions 
+  resources :action_continuations
   resources :occurs
-  resources :continuations
+  resources :occur_continuations
   
 end
-

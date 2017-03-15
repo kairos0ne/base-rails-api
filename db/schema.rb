@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170128120201) do
+ActiveRecord::Schema.define(version: 20170314170334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_continuations", force: :cascade do |t|
+    t.string   "continuation"
+    t.integer  "action_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["action_id"], name: "index_action_continuations_on_action_id", using: :btree
+  end
 
   create_table "actions", force: :cascade do |t|
     t.text     "action"
@@ -57,12 +65,28 @@ ActiveRecord::Schema.define(version: 20170128120201) do
     t.index ["brief_id"], name: "index_features_on_brief_id", using: :btree
   end
 
+  create_table "given_continuations", force: :cascade do |t|
+    t.string   "continuation"
+    t.integer  "given_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["given_id"], name: "index_given_continuations_on_given_id", using: :btree
+  end
+
   create_table "givens", force: :cascade do |t|
     t.text     "given"
     t.integer  "story_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["story_id"], name: "index_givens_on_story_id", using: :btree
+  end
+
+  create_table "occur_continuations", force: :cascade do |t|
+    t.string   "continuation"
+    t.integer  "occur_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["occur_id"], name: "index_occur_continuations_on_occur_id", using: :btree
   end
 
   create_table "occurs", force: :cascade do |t|
@@ -126,12 +150,15 @@ ActiveRecord::Schema.define(version: 20170128120201) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "action_continuations", "actions"
   add_foreign_key "actions", "stories"
   add_foreign_key "briefs", "projects"
   add_foreign_key "clients", "users"
   add_foreign_key "epics", "projects"
   add_foreign_key "features", "briefs"
+  add_foreign_key "given_continuations", "givens"
   add_foreign_key "givens", "stories"
+  add_foreign_key "occur_continuations", "occurs"
   add_foreign_key "occurs", "stories"
   add_foreign_key "positions", "projects"
   add_foreign_key "projects", "clients"
