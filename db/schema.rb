@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314170334) do
+ActiveRecord::Schema.define(version: 20170326173618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,16 @@ ActiveRecord::Schema.define(version: 20170314170334) do
     t.index ["project_id"], name: "index_sectors_on_project_id", using: :btree
   end
 
+  create_table "statuses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "text"
+    t.integer  "workflow_id"
+    t.boolean  "kanban"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["workflow_id"], name: "index_statuses_on_workflow_id", using: :btree
+  end
+
   create_table "stories", force: :cascade do |t|
     t.text     "asa"
     t.text     "iwant"
@@ -141,6 +151,18 @@ ActiveRecord::Schema.define(version: 20170314170334) do
     t.index ["epic_id"], name: "index_stories_on_epic_id", using: :btree
   end
 
+  create_table "transitions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "text"
+    t.integer  "workflow_id"
+    t.boolean  "kanban"
+    t.integer  "dependant_id"
+    t.integer  "prerequisite_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["workflow_id"], name: "index_transitions_on_workflow_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "username"
@@ -148,6 +170,14 @@ ActiveRecord::Schema.define(version: 20170314170334) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "workflows", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_workflows_on_project_id", using: :btree
   end
 
   add_foreign_key "action_continuations", "actions"
@@ -163,5 +193,8 @@ ActiveRecord::Schema.define(version: 20170314170334) do
   add_foreign_key "positions", "projects"
   add_foreign_key "projects", "clients"
   add_foreign_key "sectors", "projects"
+  add_foreign_key "statuses", "workflows"
   add_foreign_key "stories", "epics"
+  add_foreign_key "transitions", "workflows"
+  add_foreign_key "workflows", "projects"
 end

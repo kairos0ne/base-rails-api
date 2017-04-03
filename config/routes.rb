@@ -1,5 +1,8 @@
 Rails.application.routes.draw do 
   
+  resources :transitions
+  resources :statuses
+  resources :workflows
   post 'authenticate', to: 'authentication#authenticate'
   
   resources :users do
